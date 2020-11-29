@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#index'
+  root 'cards#index'
+  # get "/cards", to: "cards#index"
+
 end
