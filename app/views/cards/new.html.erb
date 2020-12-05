@@ -1,5 +1,12 @@
 <h1>新增卡片</h1>
 
+<% if @card.errors.any? %>
+<ul>
+  <% @card.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+
 <%= form_for(@card) do |f| %>
 <div>
   <%= f.label :title %>
