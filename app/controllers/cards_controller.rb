@@ -1,6 +1,11 @@
 class CardsController < ApplicationController
+
   def index
     @cards = Card.all
+  end
+
+  def show
+    find_card
   end
 
   def new
@@ -8,30 +13,42 @@ class CardsController < ApplicationController
   end
 
   def create
-    clean_params = params.require(:card).permit(:title, :content)
-    @card = Card.new(clean_params)
+    @card = Card.new(card_params)
 
     if @card.save
       redirect_to "/"
     else
       render :new
-      #redirect_to "/cards/new"
     end
   end
 
   def edit
-    @card = Card.find(params["id"])
+    find_card
   end
 
   def update
-    @card = Card.find(params["id"])
-    clean_params = params.require(:card).permit(:title, :content)
-    
-    if @card.update(clean_params)
+    find_card
+
+    if @card.update(card_params)
       redirect_to "/"
     else
       render :edit
     end
+  end
+
+  def destroy
+    find_card
+    @card.destroy
+    redirect_to "/"
+  end
+
+  private
+  def card_params
+    return params.require(:card).permit(:title, :content)
+  end
+
+  def find_card
+    @card = Card.find(params["id"])
   end
 
 end
