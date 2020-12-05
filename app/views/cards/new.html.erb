@@ -1,8 +1,14 @@
 <h1>新增卡片</h1>
 
+<%= form_for(@card) do |f| %>
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</div>
+<div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+</div>
+<%= f.submit %>
 
-<form action="/cards" method="post">
-Title
-<input type="text">
-<button>新增卡片</button>
-</form>
+<% end %>
