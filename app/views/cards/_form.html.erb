@@ -1,12 +1,12 @@
-<% if @card.errors.any? %>
+<% if card.errors.any? %>
 <ul>
-  <% @card.errors.full_messages.each do |msg| %>
+  <% card.errors.full_messages.each do |msg| %>
   <li><%= msg %></li>
   <% end %>
 </ul>
 <% end %>
 
-<%= form_for(@card) do |f| %>
+<%= form_for(card) do |f| %>
 <div>
   <%= f.label :title %>
   <%= f.text_field :title %>
