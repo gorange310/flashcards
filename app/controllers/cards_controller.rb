@@ -18,4 +18,8 @@ class CardsController < ApplicationController
       #redirect_to "/cards/new"
     end
   end
+
+  def edit
+    @card = Card.find(params["id"])
+  end
 end
