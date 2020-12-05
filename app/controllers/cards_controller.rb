@@ -22,4 +22,16 @@ class CardsController < ApplicationController
   def edit
     @card = Card.find(params["id"])
   end
+
+  def update
+    @card = Card.find(params["id"])
+    clean_params = params.require(:card).permit(:title, :content)
+    
+    if @card.update(clean_params)
+      redirect_to "/"
+    else
+      render :edit
+    end
+  end
+
 end
