@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   def index
+    @cards = Card.all
   end
 
   def new
@@ -9,7 +10,7 @@ class CardsController < ApplicationController
   def create
     clean_params = params.require(:card).permit(:title, :content)
     @card = Card.new(clean_params)
-    
+
     if @card.save
       redirect_to "/"
     else
