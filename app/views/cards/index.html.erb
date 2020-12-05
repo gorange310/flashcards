@@ -1,10 +1,14 @@
 <h1>卡片列表</h1>
 
 <%= link_to "新增卡片", new_card_path %>
-
+<hr>
 <% @cards.each do |card| %>
   <div class="card">
-    <h2><%= card.title %></h2>
+    <header class="card-title">
+      <%= card.title %>
+      <%= link_to "編輯" , edit_card_path(card.id) %>
+      <%= link_to "刪除" , "#" %>
+    </header>
     <div class="card-body">
       <p><%= card.content %></p>
     </div>
