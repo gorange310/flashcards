@@ -1,14 +1,16 @@
 class CardsController < ApplicationController
 
-  before_action :find_card, only: [:show, :edit, :update, :destroy]
-  #before_action :find_card, except: [:index, :new, :create]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  #before_action :set_card, except: [:index, :new, :create]
 
   def index
-    @cards = Card.all
+    @cards = Card.order(id: :desc)
+    # @cards = Card.all.order(id: :desc)
   end
 
   def show
     @comment = Comment.new
+    @comments = @card.comments.order(id: :desc)
   end
 
   def new
@@ -19,7 +21,8 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
 
     if @card.save
-      redirect_to "/"
+      #flash[:notice] = "新增卡片成功"
+      redirect_to "/", notice: "新增卡片成功"
     else
       render :new
     end
@@ -38,7 +41,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to "/"
+    redirect_to "/", notice: "刪除卡片"
   end
 
   private
@@ -46,7 +49,7 @@ class CardsController < ApplicationController
     return params.require(:card).permit(:title, :content)
   end
 
-  def find_card
+  def set_card
     @card = Card.find(params["id"])
   end
 

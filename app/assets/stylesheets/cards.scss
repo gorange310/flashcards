@@ -27,3 +27,17 @@
     border: 1px dotted gray;
   }
 }
+.comments {
+  li {
+    list-style: none;
+    font-size: 18px;
+    padding: 2px;
+    margin-top: 5px;
+    color: olive;
+
+    &:hover {
+      background-color: grey;
+      color: orange;
+    }
+  }
+}

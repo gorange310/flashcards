@@ -1,4 +1,25 @@
-<head>
+<h1>
   <%= @card.title %>
-</head>
+</h1>
 <p><%= @card.content %></p>
+<hr>
+
+<h3>Write a comment:</h3>
+<%= form_for( @comment, url: card_comments_path(@card) ) do |f| %>
+<div>
+  <%= f.text_area :content %>
+</div>
+<div>
+  <%= f.submit %>
+</div>
+<% end %>
+
+<ul class = "comments">
+  <% @comments.each do |comment| %>
+  <li>
+    <%= link_to "刪除", comment, method: :delete, data: { confirm: "確認刪除？" } %>
+    <%= comment.content %>
+    <%= comment.updated_at %>
+  </li>
+  <% end %>
+</ul>
