@@ -6,7 +6,5 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:edit, :update, :destroy]
-  # get "/cards/new", to: "cards#new"
-  # get "/cards", to: "cards#index"
 
 end
