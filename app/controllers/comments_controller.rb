@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   def create
     @card = Card.find(params[:card_id])
     @comment = @card.comments.new(comment_params)
+
     if @comment.save
-      redirect_to @card
+      # redirect_to @card
+      # app/views/comments/create.js.erb
     else
-      render "cards/show"
+      render 'cards/show'
     end
   end
 
