@@ -4,8 +4,20 @@ document.addEventListener('turbolinks:load' , () => {
     btn.addEventListener("click", (e) => {
       e.preventDefault()
 
-      //API
-      console.log('like');
+      const token = document.querySelector('meta[name=csrf-token]').content
+
+      const ax = require('axios');
+      ax.defaults.headers.common['X-CSRF-TOKEN'] = token;
+
+      ax.post('/cards/11/like')
+      .then(function(resp){
+        console.log('******')
+        console.log(resp.data);
+      })
+      .catch(function(err){
+        console.log('------')
+        console.log(err)
+      })
     })
   }
 })

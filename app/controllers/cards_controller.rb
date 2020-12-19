@@ -1,17 +1,19 @@
 class CardsController < ApplicationController
-
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
-  #before_action :set_card, except: [:index, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_my_card, only: [:edit, :update, :destroy]
 
   def index
     @cards = Card.order(id: :desc)
-    # @cards = Card.all.order(id: :desc)
   end
 
   def show
+    @card = Card.find(params["id"])
     @comment = Comment.new
     @comments = @card.comments.order(id: :desc)
+  end
+
+  def like
+    render json: { ok: "blabla"}
   end
 
   def new
@@ -19,22 +21,21 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.new(card_params)
-
-    if @card.save
-      #flash[:notice] = "新增卡片成功"
-      redirect_to "/", notice: "新增卡片成功"
+      @card = current_user.cards.new(card_params)
+      if @card.save
+        redirect_to "/", notice: "新增卡片成功"
     else
       render :new
     end
   end
+
 
   def edit
   end
 
   def update
     if @card.update(card_params)
-      redirect_to "/"
+      redirect_to "/", notice: '卡片更新成功'
     else
       render :edit
     end
@@ -42,16 +43,16 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to "/", notice: "刪除卡片"
+    redirect_to "/", notice: '卡片已刪除'
   end
 
   private
   def card_params
-    return params.require(:card).permit(:title, :content)
+    params.require(:card).permit(:title, :content)
   end
 
-  def set_card
-    @card = Card.find(params["id"])
+  def find_my_card
+      @card = current_user.cards.find(params["id"])
+      # @card = Card.find_by(id: params["id"], user_id: current_user.id)
   end
-
 end
