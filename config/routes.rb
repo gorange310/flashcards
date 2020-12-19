@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :cards do
     resources :comments, only: [:create]
+
+    member do
+		  post :like
+    end
+
   end
 
   resources :comments, only: [:edit, :update, :destroy]
