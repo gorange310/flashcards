@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   #before_action :set_card, except: [:index, :new, :create]
 
   def index
