@@ -2,6 +2,11 @@ class CardsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_my_card, only: [:edit, :update, :destroy]
 
+  def import
+    # 匯入！
+    redirect_to root_path, notice: '卡片已匯入'
+  end
+  
   def index
     @cards = Card.order(id: :desc)
   end

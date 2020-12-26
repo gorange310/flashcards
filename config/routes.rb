@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'cards#index'
+
+  root "cards#index"
 
   resources :cards do
-    resources :comments, only: [:create]
-
     member do
-		  post :like
+      post :like  # /cards/2/like
     end
 
+    collection do
+      get :import  # /cards/import
+    end
+
+    resources :comments, shallow: true,
+               except: [:index, :show, :new]
   end
 
-  resources :comments, only: [:edit, :update, :destroy]
-
+  # resources :comments
 end
