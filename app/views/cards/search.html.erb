@@ -1,14 +1,3 @@
-<h1>卡片列表</h1>
-<%= link_to "新增卡片", new_card_path %>
-<hr>
-
-<form action="/cards/search" method="get">
-  <input type="text" name="keyword">
-  <button type="submit">搜尋</button>
-</form>
-
-<%= paginate @cards %>
-
 <% @cards.each do |card| %>
   <div class="card">
     <header class="card-title">
