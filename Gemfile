@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
+gem 'delayed_job_active_record'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
