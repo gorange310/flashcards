@@ -4,9 +4,20 @@ class CardsController < ApplicationController
 
   def import
     # 匯入！
+    require 'open-uri'
+    result = Nokogiri::HTML(URI.open('https://nokogiri.org/tutorials/installing_nokogiri.html'))
+    top10 = result.css('.single-book .title a').first(10)
+
+    top10.each do |book, idx|
+      current_user.cards.create(
+        title: "Top #{idx}",
+        content: book.text
+      )
+    end
+
     redirect_to root_path, notice: '卡片已匯入'
   end
-  
+
   def index
     @cards = Card.order(id: :desc)
   end
