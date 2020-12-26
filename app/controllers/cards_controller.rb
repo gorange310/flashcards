@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   def import
     # 匯入！
     # Tenlong Job!
-    TenlongJob.perform_later current_user
+    TenlongJob.set(wait: 5.seconds).perform_later(current_user)
     redirect_to root_path, notice: "卡片已匯入"
   end
 
