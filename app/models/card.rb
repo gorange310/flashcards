@@ -14,4 +14,9 @@ class Card < ApplicationRecord
   def favorited_by?(user)
     users.include?(user)
   end
+
+  def self.search(keyword)
+    where("title like '%#{keyword}%' or content like '%#{keyword}%'")
+  end
+
 end
