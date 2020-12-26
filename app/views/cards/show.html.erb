@@ -1,14 +1,20 @@
-<h1>
+<h1 data-controller="icon">
   <%= @card.title %>
-  <a href="#" class="like_btn" data-card-id="<%= @card.id %>">
-    <i class="far fa-thumbs-up"></i>
+  <a data-action="icon#like" href="#" class="like_btn" data-card-id="<%= @card.id %>">
+    <% if @card.favorited_by?(current_user) %>
+      <i data-icon-target="thumb" class="fas fa-thumbs-up"></i>
+    <% else %>
+      <i data-icon-target="thumb" class="far fa-thumbs-up"></i>
+    <% end %>
   </a>
 </h1>
+
 <p>
   <%= @card.content %>
 </p>
+
 <hr>
-<%= form_for(@comment, url: card_comments_path(@card), remote: true) do |f| %>
+<%= form_with(model: @comment, url: card_comments_path(@card)) do |f| %>
   <%= f.text_area :content %>
   <%= f.submit %>
 <% end %>
