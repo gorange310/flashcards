@@ -5,6 +5,7 @@ export default class extends Controller {
 
     like(e) {
         e.preventDefault()
+        const cardId = this.data.get('carId')
             // this.thumbTarget.remove()
             // console.log('like!!');
     }
