@@ -219,6 +219,7 @@ DEPENDENCIES
   foreman (~> 0.87.2)
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  nokogiri (~> 1.6, >= 1.6.8)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   sass-rails (>= 6)
