@@ -1,43 +1,80 @@
 // Place all the styles related to the cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.field_with_errors{
-  display: inline;
-
-  label {
-    color: red;
-  }
-
-  input, textarea {
-    border: 1px red solid;
-  }
+.field_with_errors {
+    display: inline;
+    label {
+        color: red;
+    }
+    input,
+    textarea {
+        border: 1px red solid;
+    }
 }
 
 .card {
-  width: 300px;
-  height: 150px;
-  padding: 4px;
-  border: 1px solid #f0f0f0;
-  display: inline-block;
-  .card-title {
-    font-size: 18px;
-  }
-  .card-body {
-    background-color: #f0f0f0;
-    border: 1px dotted gray;
-  }
-}
-.comments {
-  li {
-    list-style: none;
-    font-size: 18px;
-    padding: 2px;
-    margin-top: 5px;
-    color: olive;
-
-    &:hover {
-      background-color: grey;
-      color: orange;
+    width: 300px;
+    height: 150px;
+    padding: 4px;
+    border: 5px solid #f0f0f0;
+    display: inline-block;
+    .card-title {
+        font-size: 18px;
     }
-  }
+    .card-body {
+        background-color: #f0f0f0;
+        border: 3px dotted gray;
+    }
+}
+
+.comments {
+    li {
+        list-style: none;
+        font-size: 18px;
+        padding: 2px;
+        margin-top: 5px;
+        color: olive;
+        &:hover {
+            background-color: grey;
+            color: orange;
+        }
+    }
+}
+
+.field_with_errors {
+    display: inline;
+    label {
+        color: red;
+    }
+    input,
+    textarea {
+        border: 1px red solid;
+    }
+}
+
+.card {
+    width: 300px;
+    height: 150px;
+    padding: 4px;
+    border: 1px solid #f0f0f0;
+    display: inline-block;
+    .card-title {
+        font-size: 18px;
+    }
+    .card-body {
+        background-color: #f0f0f0;
+        border: 1px dotted gray;
+    }
+}
+
+.comments {
+    li {
+        list-style: none;
+        font-size: 18px;
+        margin-top: 5px;
+        padding: 5px;
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
 }

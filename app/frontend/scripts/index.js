@@ -1,1 +1,1 @@
-import "./card.js"
+require('./card')
