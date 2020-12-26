@@ -6,7 +6,7 @@ class CardsController < ApplicationController
     # 匯入！
     require 'open-uri'
     result = Nokogiri::HTML(open("https://www.tenlong.com.tw/zh_tw/recent_bestselling?range=7"))
-    top10 = result.css('.single-book .title a').first(10)
+    top10 = result.css('.single-book .title a').first(20)
 
     count = 0
     top10.each.with_index do |book, idx|
@@ -20,7 +20,7 @@ class CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.page(1).per(10).order(id: :desc)
+    @cards = Card.page(params[:page]).per(10).order(id: :desc)
   end
 
   def show
